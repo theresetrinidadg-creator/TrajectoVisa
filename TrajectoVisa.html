@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8f5ed" />
+    <meta name="description" content="Explore visa pathways, estimate your points, and build a practical migration plan at your own pace." />
+    <title>TrajectoVisa — Find your way forward</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            boxShadow: {
+              soft: '0 18px 48px rgba(9, 78, 82, 0.08)',
+            },
+            colors: {
+              brand: {
+                50: '#FDF7F4',
+                100: '#FCA47C',
+                200: '#F9D779',
+                300: '#23CED9',
+                400: '#A1CCA6',
+                500: '#097C87',
+                600: '#074E5A',
+                700: '#042E34',
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --peach: #FCA47C;
+        --yellow: #F9D779;
+        --cyan: #23CED9;
+        --sage: #A1CCA6;
+        --teal: #097C87;
+        --paper: #f8f5ed;
+        --panel: #fffefa;
+        --ink: #193f42;
+        --muted: #4c676a;
+        --line: #d7e1d8;
+        --focus: #075e68;
+        --shadow: 0 14px 38px rgba(25, 63, 66, 0.08);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; scroll-padding-top: 7rem; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  overflow-x: hidden;
+}
+.hero {
+  background: #fdf1e4; /* soft peach-cream */
+  border: 1px solid rgba(9, 78, 82, 0.08);
+  box-shadow: 0 14px 38px rgba(25, 63, 66, 0.06);
+}
+      body .text-white,
+      body .text-slate-100,
+      body .text-slate-200,
+      body .text-slate-300,
+      body .text-slate-400,
+      body .text-slate-700,
+      body .text-slate-800,
+      body .text-slate-900 { color: var(--ink); }
+      body .text-slate-400,
+      body .text-slate-500,
+      body .text-slate-600 { color: var(--muted); }
+      body .text-cyan-300,
+      body .text-cyan-200,
+      body .text-cyan-100,
+      body .text-violet-300,
+      body .text-violet-200 { color: #075e68; }
+      body .text-emerald-200,
+      body .text-emerald-300 { color: #315f3e; }
+      body .text-amber-100,
+      body .text-amber-200 { color: #75442d; }
+      body .bg-slate-900\/75,
+      body .bg-slate-900\/70,
+      body .bg-slate-900\/80,
+      body .bg-slate-900\/60,
+      body .bg-slate-950\/80,
+      body .bg-slate-800\/80,
+      body .bg-slate-800,
+      body .bg-slate-900,
+      body .bg-slate-950 { background-color: var(--panel); }
+      body .bg-slate-900\/40,
+      body .bg-white\/70 { background-color: #f3f6ee; }
+      body .bg-cyan-500 { background-color: var(--cyan); }
+      body .bg-peach-200 { background-color: rgba(252, 164, 124, 0.38); }
+      body .bg-sage-200 { background-color: rgba(161, 204, 166, 0.5); }
+      body .bg-cyan-500\/10 { background-color: rgba(35, 206, 217, 0.14); }
+      body .bg-cyan-500\/15 { background-color: rgba(35, 206, 217, 0.18); }
+      body .bg-cyan-500\/20 { background-color: rgba(35, 206, 217, 0.22); }
+      body .bg-emerald-500\/10 { background-color: rgba(161, 204, 166, 0.24); }
+      body .bg-emerald-500\/15 { background-color: rgba(161, 204, 166, 0.3); }
+      body .bg-amber-500\/10 { background-color: rgba(252, 164, 124, 0.2); }
+      body .bg-amber-500\/15 { background-color: rgba(252, 164, 124, 0.26); }
+      body .bg-violet-500\/10,
+      body .bg-violet-500\/15 { background-color: rgba(9, 124, 135, 0.12); }
+      body .border-slate-700,
+      body .border-slate-800,
+      body .border-slate-900 { border-color: var(--line); }
+      body .border-cyan-500\/30,
+      body .border-cyan-500\/40,
+      body .border-cyan-500\/60,
+      body .border-violet-500\/40 { border-color: rgba(9, 124, 135, 0.3); }
+      body .border-amber-500\/30,
+      body .border-amber-500\/40 { border-color: rgba(117, 68, 45, 0.3); }
+      body .border-emerald-400\/40 { border-color: rgba(49, 95, 62, 0.3); }
+
+      header.bg-slate-900\/75 {
+        background: var(--panel);
+        border-color: var(--line);
+        box-shadow: var(--shadow);
+      }
+      header .text-white { color: var(--ink); }
+      header .text-cyan-300 { color: #075e68; }
+      header .text-cyan-300\/80 { color: #075e68; opacity: 1; }
+      body a.primary-cta { background-color: #075e68; color: #fff; }
+      body .step-link[aria-current="step"] { color: #fff; }
+      .glass {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+      main > section.glass { border-radius: 1.5rem; }
+      .profile-toggle,
+      .route-btn {
+        min-height: 44px;
+        cursor: pointer;
+        transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+      }
+      .profile-toggle.active,
+      .route-btn.active {
+        border-color: var(--teal);
+        background: rgba(9, 124, 135, 0.1);
+        color: #075e68;
+        box-shadow: inset 0 0 0 1px rgba(9, 124, 135, 0.18);
+      }
+      button { min-height: 44px; }
+      .quest-item input { width: 20px; height: 20px; flex: 0 0 auto; }
+      .quest-item input:checked + span { color: var(--ink); }
+      a, button, input, select, textarea, [tabindex] { scroll-margin-top: 7rem; }
+      body :focus-visible {
+        outline: 3px solid var(--focus);
+        outline-offset: 3px;
+      }
+      select, input:not([type="checkbox"]), textarea {
+        min-height: 48px;
+        border-color: #9aadaa;
+        background-color: #fffefa;
+        color: var(--ink);
+      }
+      select { max-width: 100%; }
+      #step-4, #step-5 { min-width: 0; }
+      .progress-fill { transition: width 420ms ease, background-color 240ms ease; }
+      .progress-fill.bg-gradient-to-r { background-image: linear-gradient(90deg, var(--sage), var(--teal)); }
+      .accordion-content { max-height: 0; overflow: hidden; transition: max-height 260ms ease; }
+      .accordion-item.open .accordion-content { max-height: 300px; }
+      .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+      .planner-nav {
+        position: sticky;
+        top: 0.5rem;
+        z-index: 20;
+        backdrop-filter: blur(16px);
+        background: rgba(255, 254, 250, 0.96);
+      }
+      .step-link[aria-current="step"] {
+        background: var(--teal);
+        color: white;
+      }
+ .hero-panel {
+  background: #fdf1e4;
+  border: 1px solid rgba(9, 78, 82, 0.08);
+  box-shadow: 0 14px 38px rgba(25, 63, 66, 0.06);
+}
+      .motion-safe { animation: rise-in 560ms both; }
+      @keyframes rise-in {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        html body *, html body *::before, html body *::after {
+          animation-duration: 0.01ms;
+          transition-duration: 0.01ms;
+        }
+      }
+      @media (max-width: 640px) {
+        .planner-nav { top: 0.25rem; }
+        body .progress-steps { display: none; }
+        .comparison-table { font-size: 0.72rem; }
+        .comparison-table th, .comparison-table td { padding: 0.55rem 0.4rem; }
+        .comparison-table { table-layout: fixed; width: 100%; }
+        .comparison-table th:nth-child(n+5), .comparison-table td:nth-child(n+5) { display: none; }
+      }
+      @media print {
+        body { background: white; color: #172b2d; }
+        .no-print, .planner-nav, .hero-section { display: none; }
+        .print-root, .glass { box-shadow: none; border: none; background: white; }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen text-slate-100 antialiased">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <header class="mb-6 flex items-center justify-between gap-4 rounded-2xl border border-slate-800 bg-slate-900/75 p-4 shadow-soft">
+        <div class="flex items-center gap-3">
+          <div class="flex h-12 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white p-1.5 shadow-sm">
+            <img src="data:image/jpeg;base64,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" alt="TrajectoVisa logo" class="h-full w-full object-contain" />
+          </div>
+          <div>
+            <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-300/80">Visa strategy studio</p>
+            <h1 class="text-2xl font-black tracking-tight text-white">TrajectoVisa</h1>
+          </div>
+        </div>
+        <div class="hidden items-center gap-2 rounded-full border border-cyan-500/40 bg-cyan-500/10 px-3 py-1.5 text-xs font-medium text-cyan-200 sm:flex">
+          <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+          Pathway planner · Free to explore
+        </div>
+      </header>
+
+      <section class="hero-section hero-panel motion-safe mb-5 overflow-hidden rounded-[2rem] border border-white/70 p-6 shadow-soft sm:p-10 lg:p-14" aria-labelledby="hero-title">
+        <div class="grid items-center gap-8 lg:grid-cols-[1.25fr_0.75fr]">
+          <div class="max-w-3xl">
+            <p class="mb-4 inline-flex rounded-full border border-teal-700/20 bg-white/80 px-4 py-2 text-sm font-semibold text-teal-800">A calmer way to plan your next chapter</p>
+            <h2 id="hero-title" class="max-w-2xl text-4xl font-black leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">Your future abroad starts with a clearer plan.</h2>
+            <p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-700 sm:text-lg">Explore visa pathways, get a points estimate, and turn your big move into manageable next steps — at your own pace.</p>
+            <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="#step-1" class="primary-cta inline-flex min-h-12 items-center justify-center rounded-full bg-teal-700 px-7 py-3 font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-teal-800">Start my free plan <span class="ml-2" aria-hidden="true">→</span></a>
+              <p class="text-sm font-medium text-slate-700">No account needed · Start whenever you’re ready</p>
+            </div>
+          </div>
+          <aside class="rounded-3xl border border-white/80 bg-white/75 p-5 shadow-sm sm:p-6" aria-label="How the planner works">
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-teal-800">Three small steps toward clarity</p>
+            <ol class="mt-5 space-y-4">
+              <li class="flex gap-3"><span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-yellow-200 font-bold text-slate-900">01</span><p class="pt-1 text-sm font-semibold text-slate-800">Explore pathways that fit your goals</p></li>
+              <li class="flex gap-3"><span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-peach-200 font-bold text-slate-900">02</span><p class="pt-1 text-sm font-semibold text-slate-800">Understand your points and options</p></li>
+              <li class="flex gap-3"><span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sage-200 font-bold text-slate-900">03</span><p class="pt-1 text-sm font-semibold text-slate-800">Leave with practical next steps</p></li>
+            </ol>
+          </aside>
+        </div>
+      </section>
+
+      <nav class="planner-nav no-print mb-6 rounded-2xl border border-slate-200 p-3 shadow-sm sm:p-4" aria-label="Planner progress">
+        <div class="flex items-center justify-between gap-4">
+          <div class="min-w-0">
+            <p class="text-xs font-semibold uppercase tracking-wider text-slate-600">Your planner</p>
+            <p id="step-progress-label" class="mt-1 truncate text-sm font-bold text-slate-900" aria-live="polite">Step 1 of 7 · Choose your starting point</p>
+          </div>
+          <div class="min-w-[100px] text-right">
+            <p class="text-xs font-medium text-slate-600">Your estimate</p>
+            <p class="text-lg font-black text-teal-800"><span id="sticky-score">0</span><span class="text-sm font-semibold"> / <span id="sticky-target">65</span> pts</span></p>
+          </div>
+        </div>
+        <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-200" role="progressbar" aria-label="Planner completion" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1" id="step-progress">
+          <div id="step-progress-fill" class="h-full rounded-full bg-teal-700 transition-all duration-300" style="width:14.3%"></div>
+        </div>
+        <ol class="progress-steps mt-3 grid grid-cols-7 gap-2 text-center text-xs font-semibold text-slate-600">
+          <li><a class="step-link inline-flex h-11 w-11 items-center justify-center rounded-full" href="#step-1" aria-current="step" aria-label="Step 1: Starting point">1</a></li>
+          <li><a class="step-link inline-flex h-11 w-11 items-center justify-center rounded-full" href="#step-2" aria-label="Step 2: Pathway types">2</a></li>
+          <li><a class="step-link inline-flex h-11 w-11 items-center justify-center rounded-full" href="#step-3" aria-label="Step 3: Your profile">3</a></li>
+          <li><a class="step-link inline-flex h-11 w-11 items-center justify-center rounded-full" href="#step-4" aria-label="Step 4: Points estimate">4</a></li>
+          <li><a class="step-link inline-flex h-11 w-11 items-center justify-center rounded-full" href="#step-5" aria-label="Step 5: Compare countries">5</a></li>
+          <li><a class="step-link inline-flex h-11 w-11 items-center justify-center rounded-full" href="#step-6" aria-label="Step 6: Your action plan">6</a></li>
+          <li><a class="step-link inline-flex h-11 w-11 items-center justify-center rounded-full" href="#step-7" aria-label="Step 7: Talent profile">7</a></li>
+        </ol>
+      </nav>
+
+      <main class="space-y-6">
+        <section id="step-1" data-planner-step="1" class="grid scroll-mt-32 gap-6 xl:grid-cols-[1.4fr_0.8fr]">
+          <div class="glass rounded-3xl p-5 shadow-soft sm:p-6">
+            <div class="mb-5 flex items-center justify-between gap-3">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">Step 1 · Your starting point</p>
+                <h2 class="mt-1 text-2xl font-bold text-white">Where are you headed?</h2>
+              </div>
+              <span class="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-200">Auto-match by origin</span>
+            </div>
+
+            <div class="grid gap-4 md:grid-cols-2">
+              <div>
+                <label for="origin-country" class="mb-2 block text-sm font-medium text-slate-200">Origin Country</label>
+                <select id="origin-country" class="w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-sm text-white outline-none ring-0 transition focus:border-cyan-400">
+                  <option>Philippines</option>
+                  <option>India</option>
+                  <option>United Kingdom</option>
+                  <option>South Africa</option>
+                  <option>Brazil</option>
+                  <option>Indonesia</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="target-country" class="mb-2 block text-sm font-medium text-slate-200">Target Destination</label>
+                <select id="target-country" class="w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-sm text-white outline-none ring-0 transition focus:border-cyan-400">
+                  <option>Australia</option>
+                  <option>Canada</option>
+                  <option>New Zealand</option>
+                  <option>USA</option>
+                  <option>Spain</option>
+                  <option>Open / Compare All</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="origin-badge" class="mt-5 flex items-start gap-3 rounded-2xl border border-cyan-500/40 bg-cyan-500/10 p-4">
+              <span class="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-cyan-300"></span>
+              <p class="text-sm font-medium text-cyan-100">PH Passport Perk: 2-Year Fast-Track Citizenship to Spain & NZ Youth Scheme Available</p>
+            </div>
+
+            <div class="mt-5 rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-black">
+              No degree or work experience yet? That’s okay. Your estimate comes from the profile details below, and your plan can start wherever you are today.
+            </div>
+          </div>
+
+          <aside class="glass rounded-3xl p-5 shadow-soft sm:p-6">
+            <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-violet-300">Your route snapshot</p>
+                <h3 class="mt-1 text-xl font-bold text-white">Snapshot</h3>
+              </div>
+              <div class="rounded-full border border-violet-500/40 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-200">Adaptive</div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="rounded-2xl border border-slate-700 bg-slate-900/80 p-4">
+                <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Origin</p>
+                <p id="origin-pill" class="mt-2 text-lg font-bold text-white">Philippines</p>
+              </div>
+              <div class="rounded-2xl border border-slate-700 bg-slate-900/80 p-4">
+                <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Destination</p>
+                <p id="destination-pill" class="mt-2 text-lg font-bold text-white">Australia</p>
+              </div>
+              <div class="rounded-2xl border border-cyan-500/30 bg-cyan-500/10 p-4">
+                <p class="text-xs uppercase tracking-[0.18em] text-cyan-200">Best-fit route</p>
+                <p id="best-fit-route" class="mt-2 text-lg font-bold text-black">Skilled + English Boost</p>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section id="step-2" data-planner-step="2" class="glass scroll-mt-32 rounded-3xl p-5 shadow-soft sm:p-6">
+          <div class="mb-5 flex items-center justify-between gap-3">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300">Step 2 · Explore your options</p>
+              <h2 class="mt-1 text-2xl font-bold text-white">Visa pathways, in plain language</h2>
+            </div>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <div class="rounded-2xl border border-slate-700 bg-slate-900/70 p-4">
+              <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-200">01</div>
+              <h3 class="text-lg font-semibold text-white">Student & Graduate Pathways</h3>
+              <p class="mt-3 text-sm text-slate-300">Post-study work, graduate streams, and pathway-to-PR planning for undergrads and recent alumni.</p>
+            </div>
+            <div class="rounded-2xl border border-slate-700 bg-slate-900/70 p-4">
+              <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-violet-500/15 text-violet-200">02</div>
+              <h3 class="text-lg font-semibold text-white">Skilled & Trade Work Visas</h3>
+              <p class="mt-3 text-sm text-slate-300">Assessments, skills matching, and apprenticeships for VET and trade-based migration routes.</p>
+            </div>
+            <div class="rounded-2xl border border-slate-700 bg-slate-900/70 p-4">
+              <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/15 text-amber-200">03</div>
+              <h3 class="text-lg font-semibold text-white">Corporate / Sponsored Entry</h3>
+              <p class="mt-3 text-sm text-slate-300">Employer-sponsored visas, skill nominations, and positions that compress the PR timeline.</p>
+            </div>
+            <div class="rounded-2xl border border-slate-700 bg-slate-900/70 p-4">
+              <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-200">04</div>
+              <h3 class="text-lg font-semibold text-white">Youth Mobility / Working Holiday</h3>
+              <p class="mt-3 text-sm text-slate-300">Flexible youth schemes, short-term working visas, and fast-track pathways for young professionals.</p>
+            </div>
+          </div>
+
+          <div class="mt-6 space-y-3">
+            <div class="accordion-item open rounded-2xl border border-slate-700 bg-slate-900/70 p-3">
+              <button class="accordion-trigger flex w-full items-center justify-between gap-3 px-2 py-2 text-left">
+                <span class="font-semibold text-white">Identity Records</span>
+                <span class="accordion-icon text-slate-300 transition-transform">▾</span>
+              </button>
+              <div class="accordion-content">
+                <ul class="mt-3 space-y-2 px-2 pb-2 text-sm text-slate-300">
+                  <li>• Valid passport with sufficient validity for the target route</li>
+                  <li>• Birth certificate and civil registry documents</li>
+                  <li>• Police clearance and character checks where required</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion-item rounded-2xl border border-slate-700 bg-slate-900/70 p-3">
+              <button class="accordion-trigger flex w-full items-center justify-between gap-3 px-2 py-2 text-left">
+                <span class="font-semibold text-white">Educational Assessments (ECA / WES / VETASSESS)</span>
+                <span class="accordion-icon text-slate-300 transition-transform">▾</span>
+              </button>
+              <div class="accordion-content">
+                <ul class="mt-3 space-y-2 px-2 pb-2 text-sm text-slate-300">
+                  <li>• WES for Canada and credential equivalency check</li>
+                  <li>• VETASSESS for Australian skills and qualification review</li>
+                  <li>• NZQA for New Zealand educational verification</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion-item rounded-2xl border border-slate-700 bg-slate-900/70 p-3">
+              <button class="accordion-trigger flex w-full items-center justify-between gap-3 px-2 py-2 text-left">
+                <span class="font-semibold text-white">Language Scores</span>
+                <span class="accordion-icon text-slate-300 transition-transform">▾</span>
+              </button>
+              <div class="accordion-content">
+                <ul class="mt-3 space-y-2 px-2 pb-2 text-sm text-slate-300">
+                  <li>• IELTS, PTE, TOEFL, DELE, or equivalent benchmark</li>
+                  <li>• Target levels vary by score-based route and occupation</li>
+                  <li>• Strong English can unlock significant points boosts</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion-item rounded-2xl border border-slate-700 bg-slate-900/70 p-3">
+              <button class="accordion-trigger flex w-full items-center justify-between gap-3 px-2 py-2 text-left">
+                <span class="font-semibold text-white">Trade Licenses / Professional Accreditation</span>
+                <span class="accordion-icon text-slate-300 transition-transform">▾</span>
+              </button>
+              <div class="accordion-content">
+                <ul class="mt-3 space-y-2 px-2 pb-2 text-sm text-slate-300">
+                  <li>• Red Seal or trade registration where relevant</li>
+                  <li>• Electrician, plumbing, or registered apprenticeship outputs</li>
+                  <li>• Professional body registration in target country</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="step-3" data-planner-step="3" class="glass scroll-mt-32 rounded-3xl p-5 shadow-soft sm:p-6">
+          <div class="mb-4 flex items-center justify-between gap-3">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700">Step 3 · Add your profile</p>
+              <h2 class="mt-1 text-2xl font-bold text-white">A first estimate, based on you</h2>
+            </div>
+            <div class="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-700">Live estimate</div>
+          </div>
+          <p class="mb-4 text-sm text-slate-600">Choose the closest match for your profile. Your estimate feeds directly into the Points Engine below; actual visa scoring depends on the country and visa subclass.</p>
+
+          <div class="grid gap-4 md:grid-cols-2">
+            <div>
+              <p class="mb-2 text-sm font-semibold text-slate-800">Education</p>
+              <div class="flex flex-wrap gap-2 profile-toggle-group" data-group="education" role="group" aria-label="Education">
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 active" data-group="education" data-value="High School">High School</button>
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700" data-group="education" data-value="Diploma / VET">Diploma / VET</button>
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700" data-group="education" data-value="Bachelor">Bachelor</button>
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700" data-group="education" data-value="Postgrad">Postgrad</button>
+              </div>
+            </div>
+            <div>
+              <p class="mb-2 text-sm font-semibold text-slate-800">Work experience</p>
+              <div class="flex flex-wrap gap-2 profile-toggle-group" data-group="experience" role="group" aria-label="Work experience">
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 active" data-group="experience" data-value="0 years">0 years</button>
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700" data-group="experience" data-value="1-2 years">1-2 years</button>
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700" data-group="experience" data-value="3-5 years">3-5 years</button>
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700" data-group="experience" data-value="5+ years">5+ years</button>
+              </div>
+            </div>
+            <div>
+              <p class="mb-2 text-sm font-semibold text-slate-800">English level</p>
+              <div class="flex flex-wrap gap-2 profile-toggle-group" data-group="english" role="group" aria-label="English level">
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 active" data-group="english" data-value="IELTS 5.5">IELTS 5.5</button>
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700" data-group="english" data-value="IELTS 6.0">IELTS 6.0</button>
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700" data-group="english" data-value="IELTS 7.0">IELTS 7.0</button>
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700" data-group="english" data-value="PTE 79+">PTE 79+</button>
+              </div>
+            </div>
+            <div>
+              <p class="mb-2 text-sm font-semibold text-slate-800">Occupation</p>
+              <div class="flex flex-wrap gap-2 profile-toggle-group" data-group="occupation" role="group" aria-label="Occupation">
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 active" data-group="occupation" data-value="General skilled">General skilled</button>
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700" data-group="occupation" data-value="Trade">Trade</button>
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700" data-group="occupation" data-value="Healthcare">Healthcare</button>
+                <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700" data-group="occupation" data-value="STEM">STEM</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-cyan-500/40 bg-cyan-500/10 p-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.18em] text-cyan-700">Assessment points</p>
+              <p class="mt-1 text-2xl font-black text-slate-800"><span id="profile-points">0</span> pts</p>
+            </div>
+            <div class="flex items-center gap-2" role="group" aria-label="Regional area">
+              <span class="text-sm font-medium text-slate-700">Regional area:</span>
+              <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700" data-group="regional" data-value="Yes">Yes</button>
+              <button class="profile-toggle rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 active" data-group="regional" data-value="No">No</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+          <div id="step-4" data-planner-step="4" class="glass scroll-mt-32 rounded-3xl p-5 shadow-soft sm:p-6">
+            <div class="mb-5 flex items-center justify-between gap-3">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">Step 4 · See your score</p>
+                <h2 class="mt-1 text-2xl font-bold text-white">Points Engine</h2>
+              </div>
+              <div class="rounded-full border border-cyan-500/40 bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-200">Real-time</div>
+            </div>
+
+            <div class="rounded-2xl border border-slate-700 bg-slate-900/70 p-4">
+              <div class="mb-4 flex items-center justify-between gap-3">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Scoreboard</p>
+                  <h3 class="mt-1 text-xl font-bold text-white"><span id="current-score">0</span> pts vs <span id="target-score">65</span> pts</h3>
+                </div>
+                <div class="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-sm font-semibold text-emerald-200" id="score-status">On track</div>
+              </div>
+
+              <div class="relative h-4 overflow-hidden rounded-full bg-slate-800" role="progressbar" aria-label="Points estimate compared with destination target" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div id="progress-fill" class="progress-fill h-full rounded-full bg-gradient-to-r from-cyan-400 via-sky-500 to-emerald-400" style="width: 0%;"></div>
+              </div>
+
+              <div class="mt-4 flex items-center justify-between text-sm text-slate-300">
+                <span>Baseline: <strong id="base-score">0</strong></span>
+                <span>Target Cutoff: <strong id="target-cutoff">65</strong></span>
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <p class="mb-3 text-sm font-medium text-slate-200">What-if quest board</p>
+              <div class="space-y-3">
+                <label class="quest-item flex cursor-pointer items-center justify-between gap-3 rounded-2xl border border-slate-700 bg-slate-900/60 p-3 transition hover:border-cyan-500/60">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" class="quest-toggle h-4 w-4 accent-cyan-500" data-points="20" />
+                    <span class="text-sm text-slate-300">What if I pass PTE 79+ / IELTS Band 8+?</span>
+                  </div>
+                  <span class="rounded-full bg-cyan-500/10 px-2 py-1 text-xs font-semibold text-cyan-200">+20</span>
+                </label>
+
+                <label class="quest-item flex cursor-pointer items-center justify-between gap-3 rounded-2xl border border-slate-700 bg-slate-900/60 p-3 transition hover:border-cyan-500/60">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" class="quest-toggle h-4 w-4 accent-cyan-500" data-points="15" />
+                    <span class="text-sm text-slate-300">What if I enroll in a STEM or Healthcare degree?</span>
+                  </div>
+                  <span class="rounded-full bg-cyan-500/10 px-2 py-1 text-xs font-semibold text-cyan-200">+15</span>
+                </label>
+
+                <label class="quest-item flex cursor-pointer items-center justify-between gap-3 rounded-2xl border border-slate-700 bg-slate-900/60 p-3 transition hover:border-cyan-500/60">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" class="quest-toggle h-4 w-4 accent-cyan-500" data-points="10" />
+                    <span class="text-sm text-slate-300">What if I complete a 1-Year Trade Apprenticeship?</span>
+                  </div>
+                  <span class="rounded-full bg-cyan-500/10 px-2 py-1 text-xs font-semibold text-cyan-200">+10</span>
+                </label>
+
+                <label class="quest-item flex cursor-pointer items-center justify-between gap-3 rounded-2xl border border-slate-700 bg-slate-900/60 p-3 transition hover:border-cyan-500/60">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" class="quest-toggle h-4 w-4 accent-cyan-500" data-points="5" />
+                    <span class="text-sm text-slate-300">What if I study or work in a designated regional area?</span>
+                  </div>
+                  <span class="rounded-full bg-cyan-500/10 px-2 py-1 text-xs font-semibold text-cyan-200">+5</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div id="step-5" data-planner-step="5" class="glass scroll-mt-32 rounded-3xl p-5 shadow-soft sm:p-6">
+            <div class="mb-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-violet-300">Step 5 · Compare destinations</p>
+              <h2 class="mt-1 text-2xl font-bold text-white">Country Comparison</h2>
+            </div>
+
+            <div class="overflow-hidden rounded-2xl border border-slate-700">
+              <div class="overflow-x-auto">
+                <table class="comparison-table min-w-full divide-y divide-slate-700 bg-slate-900/40 text-left text-sm text-slate-200">
+                  <thead class="bg-slate-800/80 text-slate-100">
+                    <tr>
+                      <th class="px-3 py-3 font-semibold">Feature</th>
+                      <th class="px-3 py-3 font-semibold">Australia</th>
+                      <th class="px-3 py-3 font-semibold">NZ</th>
+                      <th class="px-3 py-3 font-semibold">Canada</th>
+                      <th class="px-3 py-3 font-semibold">USA</th>
+                      <th class="px-3 py-3 font-semibold">Spain</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-700">
+                    <tr>
+                      <td class="px-3 py-3 font-medium text-slate-100">Baseline points needed</td>
+                      <td class="px-3 py-3">65</td>
+                      <td class="px-3 py-3">60</td>
+                      <td class="px-3 py-3">320 CRS</td>
+                      <td class="px-3 py-3">Employer / NIW</td>
+                      <td class="px-3 py-3 text-emerald-300">Fast-track 2-Year</td>
+                    </tr>
+                    <tr>
+                      <td class="px-3 py-3 font-medium text-slate-100">Fastest boost</td>
+                      <td class="px-3 py-3">PTE 79+ (+20)</td>
+                      <td class="px-3 py-3">NZ registration</td>
+                      <td class="px-3 py-3">French NCLC 7 (+50)</td>
+                      <td class="px-3 py-3">Healthcare direct hire</td>
+                      <td class="px-3 py-3 text-emerald-300">Remote income / B2</td>
+                    </tr>
+                    <tr>
+                      <td class="px-3 py-3 font-medium text-slate-100">PR route</td>
+                      <td class="px-3 py-3">189 / 190 / 491</td>
+                      <td class="px-3 py-3">Green List / SMC</td>
+                      <td class="px-3 py-3">Express Entry</td>
+                      <td class="px-3 py-3">Green Card</td>
+                      <td class="px-3 py-3 text-emerald-300">Direct residence</td>
+                    </tr>
+                    <tr>
+                      <td class="px-3 py-3 font-medium text-slate-100">Citizenship horizon</td>
+                      <td class="px-3 py-3">4 years</td>
+                      <td class="px-3 py-3">5 years</td>
+                      <td class="px-3 py-3">3 years PR</td>
+                      <td class="px-3 py-3">5 years PR</td>
+                      <td class="px-3 py-3 text-emerald-300">2 years (PH perk)</td>
+                    </tr>
+                    <tr>
+                      <td class="px-3 py-3 font-medium text-slate-100">Best fit</td>
+                      <td class="px-3 py-3">Trade / non-grad</td>
+                      <td class="px-3 py-3">Skilled workers</td>
+                      <td class="px-3 py-3">High-quality degree</td>
+                      <td class="px-3 py-3">Moderate</td>
+                      <td class="px-3 py-3 text-emerald-300">Best youth mobility</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="mt-5 rounded-2xl border border-slate-700 bg-slate-900/40 p-4">
+              <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <p class="text-[11px] uppercase tracking-[0.18em] text-cyan-300">Country dashboard</p>
+                  <h3 class="mt-1 text-xl font-bold text-white">Possible visas & certifications</h3>
+                </div>
+                <select id="visa-dashboard-country" class="rounded-full border border-cyan-500/40 bg-white/10 px-3 py-2 text-sm font-medium text-slate-800 outline-none">
+                  <option value="Australia">Australia</option>
+                  <option value="New Zealand">New Zealand</option>
+                  <option value="Canada">Canada</option>
+                  <option value="USA">USA</option>
+                  <option value="Spain">Spain</option>
+                </select>
+              </div>
+
+              <div id="visa-dashboard-detail" class="space-y-3"></div>
+            </div>
+
+          </div>
+        </section>
+
+        <section id="step-6" data-planner-step="6" class="glass scroll-mt-32 rounded-3xl p-5 shadow-soft sm:p-6">
+          <div class="mb-5 flex items-center justify-between gap-3">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-violet-300">Step 6 · Make a plan</p>
+              <h2 class="mt-1 text-2xl font-bold text-white">Dynamic Pre-Migration Blueprint</h2>
+            </div>
+            <button id="export-pdf" class="no-print rounded-xl border border-amber-500/40 bg-amber-500/10 px-4 py-2 text-sm font-semibold text-amber-100 transition hover:bg-amber-500/20">Export Action Plan PDF</button>
+          </div>
+
+          <div class="grid gap-4 lg:grid-cols-3">
+            <div class="rounded-2xl border border-slate-700 bg-slate-900/70 p-4">
+              <div class="mb-3 flex items-center gap-3">
+                <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/15 text-sm font-bold text-cyan-200">1</span>
+                <h3 class="text-lg font-semibold text-white">Phase 1: Months 1–12</h3>
+              </div>
+              <ul class="space-y-2 text-sm text-slate-300">
+                <li>• Select target occupation and benchmark salary</li>
+                <li>• Build English score plan and study route</li>
+                <li>• Validate qualifications and credential mapping</li>
+              </ul>
+            </div>
+
+            <div class="rounded-2xl border border-slate-700 bg-slate-900/70 p-4">
+              <div class="mb-3 flex items-center gap-3">
+                <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-500/15 text-sm font-bold text-violet-200">2</span>
+                <h3 class="text-lg font-semibold text-white">Phase 2: Years 1–3</h3>
+              </div>
+              <ul class="space-y-2 text-sm text-slate-300">
+                <li>• Secure skill assessments and trade or healthcare registration</li>
+                <li>• Target regional or employer-sponsored pathways</li>
+                <li>• Compile financial and immigration documentation</li>
+              </ul>
+            </div>
+
+            <div class="rounded-2xl border border-slate-700 bg-slate-900/70 p-4">
+              <div class="mb-3 flex items-center gap-3">
+                <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/15 text-sm font-bold text-emerald-200">3</span>
+                <h3 class="text-lg font-semibold text-white">Phase 3: Year 3+</h3>
+              </div>
+              <ul class="space-y-2 text-sm text-slate-300">
+                <li>• Lodge PR or residence application strategy</li>
+                <li>• Convert points into practical nomination route</li>
+                <li>• Prepare for citizenship pathway and family relocation</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="step-7" data-planner-step="7" class="glass scroll-mt-32 rounded-3xl p-5 shadow-soft sm:p-6">
+          <div class="mb-5">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700">Step 7 · Build your profile</p>
+            <h2 class="mt-1 text-2xl font-bold text-white">Create Your Talent Profile</h2>
+            <p class="mt-2 max-w-3xl text-sm text-slate-600">Bring your skills, visa pathway, and document readiness together in one employer-ready profile. Explore potential connections with international and outsourcing employers looking for skilled workers.</p>
+          </div>
+
+          <div class="grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
+            <form id="talent-profile-form" class="space-y-5 rounded-2xl border border-slate-700 bg-slate-900/40 p-4 sm:p-5">
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label for="profile-name" class="mb-2 block text-sm font-medium text-slate-700">Full name</label>
+                  <input id="profile-name" name="name" autocomplete="name" required maxlength="80" placeholder="e.g. Alex Santos" class="w-full rounded-2xl border border-slate-700 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-cyan-400" />
+                </div>
+                <div>
+                  <label for="profile-title" class="mb-2 block text-sm font-medium text-slate-700">Professional title</label>
+                  <input id="profile-title" name="title" required maxlength="80" placeholder="e.g. Registered Nurse" class="w-full rounded-2xl border border-slate-700 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-cyan-400" />
+                </div>
+                <div>
+                  <label for="profile-category" class="mb-2 block text-sm font-medium text-slate-700">Professional field</label>
+                  <select id="profile-category" name="category" class="w-full rounded-2xl border border-slate-700 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-cyan-400">
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="IT & technology">IT &amp; technology</option>
+                    <option value="Customer operations">Customer operations / BPO</option>
+                    <option value="Skilled trades">Skilled trades</option>
+                    <option value="Business & finance">Business &amp; finance</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="profile-experience" class="mb-2 block text-sm font-medium text-slate-700">Relevant experience</label>
+                  <select id="profile-experience" name="experience" class="w-full rounded-2xl border border-slate-700 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-cyan-400">
+                    <option>Less than 1 year</option>
+                    <option>1–2 years</option>
+                    <option selected>3–5 years</option>
+                    <option>5+ years</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="profile-visa-status" class="mb-2 block text-sm font-medium text-slate-700">Visa / work authorization</label>
+                  <select id="profile-visa-status" name="visaStatus" class="w-full rounded-2xl border border-slate-700 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-cyan-400">
+                    <option>Open to employer sponsorship</option>
+                    <option>Visa application in progress</option>
+                    <option>Work visa secured</option>
+                    <option>Authorized to work in destination</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="profile-availability" class="mb-2 block text-sm font-medium text-slate-700">Availability</label>
+                  <select id="profile-availability" name="availability" class="w-full rounded-2xl border border-slate-700 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-cyan-400">
+                    <option>Immediately</option>
+                    <option>Within 1–3 months</option>
+                    <option>Flexible / planning ahead</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="profile-skills" class="mb-2 block text-sm font-medium text-slate-700">Key skills</label>
+                <input id="profile-skills" name="skills" maxlength="180" placeholder="e.g. patient care, clinical documentation, team leadership" class="w-full rounded-2xl border border-slate-700 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-cyan-400" />
+              </div>
+
+              <div>
+                <label for="profile-summary" class="mb-2 block text-sm font-medium text-slate-700">Professional summary</label>
+                <textarea id="profile-summary" name="summary" rows="3" maxlength="400" placeholder="Share a short introduction about your experience and the roles you are seeking." class="w-full rounded-2xl border border-slate-700 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-cyan-400"></textarea>
+              </div>
+
+              <fieldset>
+                <legend class="mb-2 text-sm font-semibold text-slate-700">Documents and credentials ready</legend>
+                <p class="mb-3 text-xs text-slate-600">Mark what you already have. This profile tracks readiness only; do not enter ID numbers or upload sensitive documents here.</p>
+                <div class="grid gap-2 sm:grid-cols-2">
+                  <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-700 bg-white p-3 text-sm text-slate-700"><input class="profile-document h-4 w-4 accent-cyan-500" type="checkbox" value="Valid passport" /> Valid passport</label>
+                  <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-700 bg-white p-3 text-sm text-slate-700"><input class="profile-document h-4 w-4 accent-cyan-500" type="checkbox" value="Education credentials" /> Education credentials</label>
+                  <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-700 bg-white p-3 text-sm text-slate-700"><input class="profile-document h-4 w-4 accent-cyan-500" type="checkbox" value="Skills assessment or license" /> Skills assessment / license</label>
+                  <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-700 bg-white p-3 text-sm text-slate-700"><input class="profile-document h-4 w-4 accent-cyan-500" type="checkbox" value="English test results" /> English test results</label>
+                  <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-700 bg-white p-3 text-sm text-slate-700"><input class="profile-document h-4 w-4 accent-cyan-500" type="checkbox" value="Resume or CV" /> Resume / CV</label>
+                </div>
+              </fieldset>
+
+              <div class="flex flex-wrap items-center gap-3">
+                <button type="submit" class="rounded-xl bg-cyan-500 px-5 py-3 text-sm font-bold text-slate-900 transition hover:brightness-95">Save profile preview</button>
+                <p id="profile-save-status" class="text-sm text-slate-600" aria-live="polite">Your profile stays in this browser session.</p>
+              </div>
+            </form>
+
+            <div class="space-y-4">
+              <article class="rounded-2xl border border-cyan-500/30 bg-cyan-500/10 p-5">
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-700">Employer-ready preview</p>
+                    <h3 id="profile-preview-name" class="mt-2 text-xl font-bold text-slate-800">Your name</h3>
+                    <p id="profile-preview-title" class="mt-1 text-sm font-medium text-slate-700">Your professional title</p>
+                  </div>
+                  <span id="profile-completion" class="shrink-0 rounded-full border border-cyan-500/40 bg-white px-3 py-1 text-xs font-semibold text-cyan-700">0% complete</span>
+                </div>
+                <p id="profile-preview-route" class="mt-4 text-sm text-slate-700">Philippines → Australia · Open to employer sponsorship</p>
+                <p id="profile-preview-experience" class="mt-2 text-sm text-slate-700">3–5 years of relevant experience · Flexible / planning ahead</p>
+                <p id="profile-preview-skills" class="mt-3 text-sm text-slate-600">Add your key skills to help employers find your profile.</p>
+                <p id="profile-preview-summary" class="mt-3 text-sm text-slate-700">Add a short introduction to make your profile stand out.</p>
+                <div class="mt-4 border-t border-cyan-500/20 pt-3">
+                  <p class="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-700">Document readiness</p>
+                  <p id="profile-preview-documents" class="mt-1 text-sm text-slate-700">0 of 5 items marked ready</p>
+                </div>
+              </article>
+
+              <div class="rounded-2xl border border-slate-700 bg-slate-900/40 p-4">
+                <div class="mb-3">
+                  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">Potential connections</p>
+                  <h3 class="mt-1 text-lg font-bold text-slate-800">Employer match preview</h3>
+                  <p class="mt-1 text-xs text-slate-600">Illustrative employer types, not live vacancies or confirmed partners.</p>
+                </div>
+                <div id="employer-match-list" class="space-y-3"></div>
+                <p id="employer-connection-status" class="mt-3 text-sm text-slate-600" aria-live="polite">Complete your profile to prepare for an introduction.</p>
+              </div>
+              <p class="text-xs leading-relaxed text-slate-500">This prototype does not publish your profile or send introductions. A secure employer platform and your consent would be needed to make real connections.</p>
+            </div>
+          </div>
+        </section>
+        <aside class="rounded-2xl border border-amber-700/20 bg-amber-100/70 p-4 text-sm leading-relaxed text-slate-800" role="note">
+          <strong class="font-bold">A note about estimates:</strong> This planner is for early exploration only. Scores, routes, and timelines are estimates and can change with immigration rules and your circumstances. It is not legal advice; check official government guidance or speak with a qualified immigration professional before making decisions.
+        </aside>
+      </main>
+    </div>
+
+    <script>
+      const currentScoreEl = document.getElementById('current-score');
+      const targetScoreEl = document.getElementById('target-score');
+      const baseScoreEl = document.getElementById('base-score');
+      const targetCutoffEl = document.getElementById('target-cutoff');
+      const progressFill = document.getElementById('progress-fill');
+      const scoreStatusEl = document.getElementById('score-status');
+      const originCountryEl = document.getElementById('origin-country');
+      const targetCountryEl = document.getElementById('target-country');
+      const originPillEl = document.getElementById('origin-pill');
+      const destinationPillEl = document.getElementById('destination-pill');
+      const bestFitRouteEl = document.getElementById('best-fit-route');
+      const originBadgeEl = document.getElementById('origin-badge');
+      const questToggles = [...document.querySelectorAll('.quest-toggle')];
+      const visaDashboardCountryEl = document.getElementById('visa-dashboard-country');
+      const visaDashboardDetailEl = document.getElementById('visa-dashboard-detail');
+      const talentProfileForm = document.getElementById('talent-profile-form');
+      const employerMatchListEl = document.getElementById('employer-match-list');
+      const stickyScoreEl = document.getElementById('sticky-score');
+      const stickyTargetEl = document.getElementById('sticky-target');
+      const stepProgressEl = document.getElementById('step-progress');
+      const stepProgressFillEl = document.getElementById('step-progress-fill');
+      const stepProgressLabelEl = document.getElementById('step-progress-label');
+      const plannerSteps = [...document.querySelectorAll('[data-planner-step]')];
+      const stepLabels = [
+        'Choose a destination',
+        'Explore pathways',
+        'Your profile',
+        'Points estimate',
+        'Compare countries',
+        'Action plan',
+        'Talent profile',
+      ];
+
+      const employerChannels = {
+        Healthcare: [
+          ['Healthcare staffing teams', 'Connect skilled clinicians with international care providers.'],
+          ['Health operations & outsourcing', 'Explore patient-support and healthcare administration roles.'],
+          ['Employer-sponsored care providers', 'Find employers who may consider sponsorship for in-demand roles.'],
+        ],
+        'IT & technology': [
+          ['Technology outsourcing teams', 'Match software, data, and infrastructure skills with global delivery work.'],
+          ['International product support', 'Explore technical support and customer engineering opportunities.'],
+          ['Employer-sponsored tech companies', 'Find employers who may consider sponsorship for specialist roles.'],
+        ],
+        'Customer operations': [
+          ['International BPO companies', 'Connect customer service and operations talent with global outsourcing teams.'],
+          ['Shared services centers', 'Explore support, administration, and back-office opportunities.'],
+          ['Multilingual support teams', 'Highlight language and customer experience skills to global employers.'],
+        ],
+        'Skilled trades': [
+          ['International trade recruiters', 'Connect qualified tradespeople with employers seeking practical skills.'],
+          ['Infrastructure & construction teams', 'Explore trade and technician roles across major projects.'],
+          ['Employer-sponsored trade roles', 'Find employers who may consider sponsorship for in-demand skills.'],
+        ],
+        'Business & finance': [
+          ['Global business services', 'Connect finance and administration skills with international teams.'],
+          ['Outsourced finance operations', 'Explore accounting, payroll, and business support opportunities.'],
+          ['Employer-sponsored professional roles', 'Find employers who may consider sponsorship for specialist roles.'],
+        ],
+      };
+
+      function prepareEmployerIntroduction(employerTitle) {
+        const status = document.getElementById('employer-connection-status');
+        if (!document.getElementById('profile-name').value.trim() || !document.getElementById('profile-title').value.trim()) {
+          status.textContent = 'Add your name and professional title before preparing an introduction.';
+          return;
+        }
+
+        status.textContent = `Introduction preview prepared for ${employerTitle}. This prototype does not send requests.`;
+      }
+
+      function renderEmployerMatches() {
+        const matches = employerChannels[document.getElementById('profile-category').value] || employerChannels.Healthcare;
+        employerMatchListEl.replaceChildren();
+
+        matches.forEach(([title, description]) => {
+          const card = document.createElement('article');
+          card.className = 'rounded-xl border border-slate-700 bg-white p-3';
+
+          const heading = document.createElement('h4');
+          heading.className = 'text-sm font-semibold text-slate-800';
+          heading.textContent = title;
+
+          const detail = document.createElement('p');
+          detail.className = 'mt-1 text-xs leading-relaxed text-slate-600';
+          detail.textContent = `${description} Target: ${targetCountryEl.value}.`;
+
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'mt-3 rounded-lg border border-cyan-500/40 bg-cyan-500/10 px-3 py-2 text-xs font-semibold text-cyan-700 transition hover:bg-cyan-500/20';
+          button.dataset.employer = title;
+          button.textContent = 'Prepare introduction';
+          button.addEventListener('click', () => prepareEmployerIntroduction(title));
+
+          card.append(heading, detail, button);
+          employerMatchListEl.append(card);
+        });
+      }
+
+      function renderTalentProfile() {
+        const name = document.getElementById('profile-name').value.trim();
+        const title = document.getElementById('profile-title').value.trim();
+        const skills = document.getElementById('profile-skills').value.trim();
+        const summary = document.getElementById('profile-summary').value.trim();
+        const experience = document.getElementById('profile-experience').value;
+        const visaStatus = document.getElementById('profile-visa-status').value;
+        const availability = document.getElementById('profile-availability').value;
+        const readyDocuments = [...document.querySelectorAll('.profile-document:checked')]
+          .map((input) => input.value);
+        const completionItems = [name, title, skills, summary, ...readyDocuments];
+        const completedItems = completionItems.filter(Boolean).length;
+        const completion = Math.round((completedItems / 9) * 100);
+
+        document.getElementById('profile-preview-name').textContent = name || 'Your name';
+        document.getElementById('profile-preview-title').textContent = title || 'Your professional title';
+        document.getElementById('profile-preview-route').textContent = `${originCountryEl.value} → ${targetCountryEl.value} · ${visaStatus}`;
+        document.getElementById('profile-preview-experience').textContent = `${experience} of relevant experience · ${availability}`;
+        document.getElementById('profile-preview-skills').textContent = skills || 'Add your key skills to help employers find your profile.';
+        document.getElementById('profile-preview-summary').textContent = summary || 'Add a short introduction to make your profile stand out.';
+        document.getElementById('profile-preview-documents').textContent = `${readyDocuments.length} of 5 items marked ready${readyDocuments.length ? `: ${readyDocuments.join(', ')}` : ''}`;
+        document.getElementById('profile-completion').textContent = `${completion}% complete`;
+      }
+
+      talentProfileForm.addEventListener('input', () => {
+        document.getElementById('employer-connection-status').textContent = 'Complete your profile to prepare for an introduction.';
+        renderTalentProfile();
+      });
+      talentProfileForm.addEventListener('change', renderTalentProfile);
+      document.getElementById('profile-category').addEventListener('change', () => {
+        document.getElementById('employer-connection-status').textContent = 'Complete your profile to prepare for an introduction.';
+        renderEmployerMatches();
+      });
+      talentProfileForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        document.getElementById('profile-save-status').textContent = 'Preview saved for this session only. No files are uploaded and no employers are contacted.';
+      });
+
+      const visaDashboardData = {
+        Australia: {
+          routes: [
+            {
+              name: 'Subclass 189 (Skilled Independent)',
+              base: '65+ points',
+              requirements: ['Age under 45 at invitation', 'Minimum 65 points on the points test', 'Competent English (IELTS 6.0 or equivalent)', 'Positive skills assessment for nominated occupation', 'Medical and police clearance'],
+              specialized: ['Nurses: ANMAC + AHPRA + OET/IELTS', 'IT/Tech: ACS assessment + degree + 2-4 years post-qualification experience', 'Trades: TRA assessment + practical verification']
+            },
+            {
+              name: 'Subclass 190 (State Nominated)',
+              base: 'State nomination + 65+ points',
+              requirements: ['State or territory nomination', 'Age under 45', 'Skill assessment and occupational match', 'Minimum points threshold', 'English benchmark and health checks'],
+              specialized: ['State-specific priority occupations', 'Regional or state-in-demand jobs can help', 'Nurses and trades often get faster state support']
+            },
+            {
+              name: 'Subclass 491 (Regional)',
+              base: 'Regional stay + points',
+              requirements: ['Regional area nomination or sponsorship', 'Relevant occupation and skills assessment', 'English proficiency', 'Minimum points threshold', 'Regional work or study requirement'],
+              specialized: ['Regional work in designated areas gives extra points', 'Excellent route for trades and skilled workers with lower score gaps']
+            },
+            {
+              name: 'Subclass 482 (Skills in Demand)',
+              base: 'Employer sponsorship',
+              requirements: ['Approved Australian business sponsor', '1-2 years relevant work experience', 'Market salary and job offer', 'Relevant skills and work history', 'Visa sponsorship approval'],
+              specialized: ['Employers often prioritize tech, healthcare, engineering, and trades', 'Strong fit for workers already in demand in Australia']
+            },
+            {
+              name: 'Subclass 186 (Employer Nomination)',
+              base: 'Employer nomination + experience',
+              requirements: ['3+ years full-time post-qualification experience', 'Employer nomination', 'Positive skills assessment', 'Relevant occupation and compliance with market salary'],
+              specialized: ['Often used by professionals and specialists moving from employer sponsorship to PR', 'Strong for healthcare, engineering, and senior technical roles']
+            }
+          ],
+          summary: 'Australia rewards strong English, age, skills, and regional work. The best pathways vary by occupation type, with trades, healthcare, and IT often moving most efficiently.'
+        },
+        'New Zealand': {
+          routes: [
+            {
+              name: 'Straight to Residence (Tier 1 Green List)',
+              base: 'Job offer + green list role',
+              requirements: ['Full-time permanent or 12+ month job offer', 'Accredited employer', 'Age 55 or younger', 'IELTS 6.5+ or equivalent', 'Occupation is on Tier 1 Green List'],
+              specialized: ['Nurses: NZ nursing registration', 'Tech roles: relevant degree and verified experience', 'Priority occupations move fastest']
+            },
+            {
+              name: 'Work to Residence (Tier 2 Green List)',
+              base: '24 months work in NZ',
+              requirements: ['Green List occupation', 'Accredited employer', 'Full-time work for 24 months', 'Age and English requirement', 'Good standing with employer and immigration compliance'],
+              specialized: ['Trades and technicians are often eligible', 'Strong path for workers already employed in NZ']
+            },
+            {
+              name: 'Skilled Migrant Category (SMC)',
+              base: 'Points from skills and qualification',
+              requirements: ['At least 6 points from registration, qualification, or experience', 'Relevant skills or qualifications', 'Age and health checks', 'English benchmark'],
+              specialized: ['Professional registration counts heavily', 'Advanced degrees or specialist experience can lift eligibility']
+            }
+          ],
+          summary: 'New Zealand is highly favorable when a person has a Green List occupation, professional registration, or a firm job offer in a targeted role.'
+        },
+        Canada: {
+          routes: [
+            {
+              name: 'Express Entry (Federal Skilled Worker)',
+              base: 'CRS score',
+              requirements: ['WES educational credential assessment', 'IELTS / CELPIP / TEF / TCF score', 'Eligible work experience', 'Occupation and profile fit', 'Medical and police checks'],
+              specialized: ['French NCLC 7 adds a major score bump', 'Healthcare professionals and IT workers often score well', 'Canadian experience strengthens eligibility']
+            },
+            {
+              name: 'Provincial Nominee Program (PNP)',
+              base: 'Provincial nomination',
+              requirements: ['Provincial nomination approval', 'Skill and work profile fit', 'Education and language scores', 'Job demand in target province', 'Provincial application and compliance'],
+              specialized: ['Trades and healthcare are often prioritized by provinces', 'Good route when CRS is just below the cut-off']
+            },
+            {
+              name: 'Category-Based / Trade Draws',
+              base: 'Occupation-based draws',
+              requirements: ['Relevant occupation and work experience', 'Language benchmark', 'Credentials and occupation validation', 'Province or category match'],
+              specialized: ['Trades, healthcare, STEM, and transport occupations often qualify', 'A strong fit for skilled workers without a top-tier degree']
+            }
+          ],
+          summary: 'Canada is strongest for applicants with a credential assessment, clear language score, and occupation in a province or category draw that is currently active.'
+        },
+        USA: {
+          routes: [
+            {
+              name: 'EB-2 (Advanced Degree / Exceptional Ability)',
+              base: 'Professional qualification',
+              requirements: ['Advanced degree or exceptional ability', 'Relevant professional background', 'Evidence of achievement', 'Employer or self-petition path depending on subcategory', 'Labor certification in many cases'],
+              specialized: ['Healthcare professionals can qualify with advanced credentials', 'STEM, engineering, and research-heavy profiles do well', 'NIW can bypass employer sponsorship in some cases']
+            },
+            {
+              name: 'EB-3 (Skilled Worker / Professional / Other Worker)',
+              base: 'Employer sponsorship',
+              requirements: ['Employer-sponsored job offer', 'Required skills or degree for role', 'Labor certification or employer proof', 'Relevant experience and professional credentials', 'Good wage and role fit'],
+              specialized: ['Healthcare workers, technicians, and engineers are common', 'Best when employer is ready to sponsor a specific role']
+            },
+            {
+              name: 'NIW (National Interest Waiver)',
+              base: 'National-benefit case',
+              requirements: ['Strong educational and professional history', 'Evidence of impact in a field', 'Ability to show national interest benefit', 'Field-specific achievements or publications', 'Strong professional profile'],
+              specialized: ['Excellent for scientists, doctors, founders, and highly specialized professionals', 'Strong option when employer sponsorship is not available']
+            },
+            {
+              name: 'H-1B / Specialty Occupation',
+              base: 'Employer-sponsored specialty role',
+              requirements: ['Job offer in a specialty occupation', 'Bachelor’s or equivalent and relevant experience', 'Employer labor condition filings', 'Relevant work history and credentials', 'Specialized skill in a target role'],
+              specialized: ['IT, engineering, healthcare, and analytics are common winners', 'Good fit for workers with strong technical or healthcare skills']
+            }
+          ],
+          summary: 'The USA route is strongest for professionally qualified workers with strong employer sponsorship or a compelling national-interest profile.'
+        },
+        Spain: {
+          routes: [
+            {
+              name: 'HSP / Residence Visa',
+              base: 'Residence and income route',
+              requirements: ['Passport and civil records', 'Proof of accommodation and income', 'Health insurance', 'Background checks and application paperwork', 'Nationality and legal status compliance'],
+              specialized: ['B2 Spanish is often needed for long-term residence and integration', 'Good for remote workers and financially stable applicants']
+            },
+            {
+              name: 'Digital Nomad / Remote Income Route',
+              base: 'Remote income + legal compliance',
+              requirements: ['Remote work contract or freelance income', 'Proof of income and work arrangement', 'Valid passport and health insurance', 'Financial records and client/employer proof', 'Documented remote eligibility'],
+              specialized: ['Remote workers, IT, marketing, design, and consulting profiles fit well', 'Strong for applicants wanting flexibility without a traditional degree requirement']
+            },
+            {
+              name: 'Youth Mobility / Working Holiday',
+              base: 'Youth scheme eligibility',
+              requirements: ['Age eligibility for the youth scheme', 'Passport from partner country', 'Travel and financial support documents', 'Health and character documents', 'Program-specific rules and work permit limits'],
+              specialized: ['Very attractive for young Filipinos', 'Good stepping stone to longer-term work or residence planning']
+            },
+            {
+              name: 'Fast-Track Citizenship Pathway',
+              base: 'Eligible Filipino advantage',
+              requirements: ['Eligible citizenship or residence pathway', 'Valid residence and legal stay compliance', 'Relevant timeline and documentation', 'Proof of qualifying residence or family ties', 'Country-specific naturalization criteria'],
+              specialized: ['Philippine passport holders may benefit from fast-track access and youth pathways', 'Highly strategic for families and young professionals']
+            }
+          ],
+          summary: 'Spain is especially attractive for Filipinos because of the youth mobility and fast-track citizenship opportunities, with strong value for flexible work and long-term settlement planning.'
+        }
+      };
+
+      const destinationScores = {
+        Australia: 65,
+        Canada: 67,
+        'New Zealand': 60,
+        USA: 70,
+        Spain: 55,
+        'Open / Compare All': 65,
+      };
+
+      const destinationRoutes = {
+        Australia: 'Skilled + English Boost',
+        Canada: 'Express Entry + CRS Ladder',
+        'New Zealand': 'Green List + Registration',
+        USA: 'Employer / NIW Strategy',
+        Spain: 'Youth Mobility + Residency',
+        'Open / Compare All': 'Compare all pathways',
+      };
+
+      const originPerks = {
+        Philippines: 'PH Passport Perk: 2-Year Fast-Track Citizenship to Spain & NZ Youth Scheme Available',
+        India: 'India Passport Perk: Strong skilled worker routes and employer sponsorship availability',
+        'United Kingdom': 'UK Passport Perk: Broad access with low friction across many skilled visa avenues',
+        'South Africa': 'South Africa Passport Perk: Good fit for skilled and regional pathways',
+        Brazil: 'Brazil Passport Perk: Open to skilled work and youth mobility opportunities',
+        Indonesia: 'Indonesia Passport Perk: Early-stage mobility planning with strong trade and healthcare options',
+      };
+
+      function updateOriginBanner() {
+        const origin = originCountryEl.value;
+        originPillEl.textContent = origin;
+        originBadgeEl.innerHTML = `
+          <span class="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-cyan-300"></span>
+          <p class="text-sm font-medium text-cyan-100">${originPerks[origin] || originPerks.Philippines}</p>
+        `;
+      }
+
+      function updateDestinationSummary() {
+        const destination = targetCountryEl.value;
+        destinationPillEl.textContent = destination;
+        bestFitRouteEl.textContent = destinationRoutes[destination] || destinationRoutes.Australia;
+      }
+
+      const profileWeights = {
+        education: {
+          'High School': 0,
+          'Diploma / VET': 10,
+          'Bachelor': 18,
+          'Postgrad': 25,
+        },
+        experience: {
+          '0 years': 0,
+          '1-2 years': 8,
+          '3-5 years': 18,
+          '5+ years': 28,
+        },
+        english: {
+          'IELTS 5.5': 0,
+          'IELTS 6.0': 10,
+          'IELTS 7.0': 20,
+          'PTE 79+': 30,
+        },
+        occupation: {
+          'General skilled': 0,
+          Trade: 12,
+          Healthcare: 15,
+          STEM: 18,
+        },
+        regional: {
+          No: 0,
+          Yes: 8,
+        },
+      };
+
+      const profileState = {
+        education: 'High School',
+        experience: '0 years',
+        english: 'IELTS 5.5',
+        occupation: 'General skilled',
+        regional: 'No',
+      };
+
+      function renderVisaDashboard() {
+        const country = visaDashboardCountryEl.value;
+        const data = visaDashboardData[country];
+        const activeRoute = data.routes[0];
+
+        const routeButtons = data.routes
+          .map((route) => `
+            <button type="button" class="route-btn rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 ${route.name === activeRoute.name ? 'active' : ''}" aria-pressed="${route.name === activeRoute.name}" data-route="${route.name}">
+              ${route.name}
+            </button>
+          `)
+          .join('');
+
+        const selectedRoute = activeRoute;
+
+        visaDashboardDetailEl.innerHTML = `
+          <div class="rounded-2xl border border-cyan-500/30 bg-cyan-500/10 p-4">
+            <p class="text-xs uppercase tracking-[0.18em] text-cyan-700">Best fit overview</p>
+            <p class="mt-2 text-sm text-slate-800">${data.summary}</p>
+          </div>
+          <div class="mt-3 flex flex-wrap gap-2">${routeButtons}</div>
+          <div class="mt-4 grid gap-3 md:grid-cols-2">
+            <div class="rounded-2xl border border-slate-700 bg-white/70 p-4">
+              <p class="mb-2 text-sm font-semibold text-slate-800">${selectedRoute.name}</p>
+              <p class="mb-2 text-xs uppercase tracking-[0.18em] text-slate-500">Base requirement</p>
+              <p class="mb-3 text-sm text-slate-700">${selectedRoute.base}</p>
+              <p class="mb-2 text-xs uppercase tracking-[0.18em] text-slate-500">Required credentials</p>
+              <ul class="space-y-2 text-sm text-slate-700">
+                ${selectedRoute.requirements.map((item) => `<li>• ${item}</li>`).join('')}
+              </ul>
+            </div>
+            <div class="rounded-2xl border border-slate-700 bg-white/70 p-4">
+              <p class="mb-2 text-sm font-semibold text-slate-800">Specialized / occupational needs</p>
+              <ul class="space-y-2 text-sm text-slate-700">
+                ${selectedRoute.specialized.map((item) => `<li>• ${item}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+        `;
+
+        document.querySelectorAll('.route-btn').forEach((button) => {
+          button.addEventListener('click', () => {
+            const selectedName = button.dataset.route;
+            const nextRoute = data.routes.find((route) => route.name === selectedName) || data.routes[0];
+            visaDashboardDetailEl.innerHTML = '';
+            renderVisaDashboardWithRoute(country, nextRoute.name);
+            visaDashboardDetailEl.querySelector('.route-btn.active')?.focus();
+          });
+        });
+      }
+
+      function renderVisaDashboardWithRoute(country, selectedRouteName) {
+        const data = visaDashboardData[country];
+        const selectedRoute = data.routes.find((route) => route.name === selectedRouteName) || data.routes[0];
+
+        const routeButtons = data.routes
+          .map((route) => `
+            <button type="button" class="route-btn rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 ${route.name === selectedRoute.name ? 'active' : ''}" aria-pressed="${route.name === selectedRoute.name}" data-route="${route.name}">
+              ${route.name}
+            </button>
+          `)
+          .join('');
+
+        visaDashboardDetailEl.innerHTML = `
+          <div class="rounded-2xl border border-cyan-500/30 bg-cyan-500/10 p-4">
+            <p class="text-xs uppercase tracking-[0.18em] text-cyan-700">Best fit overview</p>
+            <p class="mt-2 text-sm text-slate-800">${data.summary}</p>
+          </div>
+          <div class="mt-3 flex flex-wrap gap-2">${routeButtons}</div>
+          <div class="mt-4 grid gap-3 md:grid-cols-2">
+            <div class="rounded-2xl border border-slate-700 bg-white/70 p-4">
+              <p class="mb-2 text-sm font-semibold text-slate-800">${selectedRoute.name}</p>
+              <p class="mb-2 text-xs uppercase tracking-[0.18em] text-slate-500">Base requirement</p>
+              <p class="mb-3 text-sm text-slate-700">${selectedRoute.base}</p>
+              <p class="mb-2 text-xs uppercase tracking-[0.18em] text-slate-500">Required credentials</p>
+              <ul class="space-y-2 text-sm text-slate-700">
+                ${selectedRoute.requirements.map((item) => `<li>• ${item}</li>`).join('')}
+              </ul>
+            </div>
+            <div class="rounded-2xl border border-slate-700 bg-white/70 p-4">
+              <p class="mb-2 text-sm font-semibold text-slate-800">Specialized / occupational needs</p>
+              <ul class="space-y-2 text-sm text-slate-700">
+                ${selectedRoute.specialized.map((item) => `<li>• ${item}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+        `;
+
+        document.querySelectorAll('.route-btn').forEach((button) => {
+          button.addEventListener('click', () => {
+            const nextRouteName = button.dataset.route;
+            renderVisaDashboardWithRoute(country, nextRouteName);
+            visaDashboardDetailEl.querySelector('.route-btn.active')?.focus();
+          });
+        });
+      }
+
+      function updateProfilePoints() {
+        const total = profileWeights.education[profileState.education]
+          + profileWeights.experience[profileState.experience]
+          + profileWeights.english[profileState.english]
+          + profileWeights.occupation[profileState.occupation]
+          + profileWeights.regional[profileState.regional];
+
+        document.getElementById('profile-points').textContent = String(total);
+        recomputeScore();
+      }
+
+      function recomputeScore() {
+        const baseScore = Number(document.getElementById('profile-points').textContent || 0);
+        const targetScore = destinationScores[targetCountryEl.value] || 65;
+        const bonusScore = [...questToggles].filter((input) => input.checked).reduce((sum, input) => sum + Number(input.dataset.points), 0);
+        const totalScore = baseScore + bonusScore;
+
+        baseScoreEl.textContent = String(baseScore);
+        targetCutoffEl.textContent = String(targetScore);
+        currentScoreEl.textContent = String(totalScore);
+        targetScoreEl.textContent = String(targetScore);
+        stickyScoreEl.textContent = String(totalScore);
+        stickyTargetEl.textContent = String(targetScore);
+
+        const percentage = Math.min((totalScore / targetScore) * 100, 100);
+        progressFill.style.width = `${percentage}%`;
+        progressFill.parentElement.setAttribute('aria-valuenow', String(Math.round(percentage)));
+
+        if (totalScore >= targetScore) {
+          scoreStatusEl.textContent = 'Estimate meets target';
+          scoreStatusEl.className = 'rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-200';
+          progressFill.className = 'progress-fill h-full rounded-full bg-gradient-to-r from-emerald-400 via-green-500 to-cyan-400';
+        } else if (totalScore >= targetScore * 0.85) {
+          scoreStatusEl.textContent = 'Getting close';
+          scoreStatusEl.className = 'rounded-full border border-amber-500/40 bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-200';
+          progressFill.className = 'progress-fill h-full rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-400';
+        } else {
+          scoreStatusEl.textContent = 'A starting point';
+          scoreStatusEl.className = 'rounded-full border border-cyan-500/40 bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-200';
+          progressFill.className = 'progress-fill h-full rounded-full bg-gradient-to-r from-cyan-400 via-sky-500 to-emerald-400';
+        }
+      }
+
+      function initializeProfileToggles() {
+        document.querySelectorAll('.profile-toggle').forEach((button) => {
+          button.type = 'button';
+          button.setAttribute('aria-pressed', String(button.classList.contains('active')));
+          button.addEventListener('click', () => {
+            const group = button.dataset.group;
+            const value = button.dataset.value;
+
+            document.querySelectorAll(`.profile-toggle[data-group="${group}"]`).forEach((toggle) => {
+              toggle.classList.toggle('active', toggle === button);
+              toggle.setAttribute('aria-pressed', String(toggle === button));
+            });
+
+            if (group !== 'regional') {
+              profileState[group] = value;
+            } else {
+              profileState.regional = value;
+            }
+
+            updateProfilePoints();
+          });
+        });
+      }
+
+      questToggles.forEach((toggle) => {
+        toggle.addEventListener('change', recomputeScore);
+      });
+
+      originCountryEl.addEventListener('change', () => {
+        updateOriginBanner();
+        renderTalentProfile();
+      });
+      targetCountryEl.addEventListener('change', () => {
+        updateDestinationSummary();
+        recomputeScore();
+        renderTalentProfile();
+        document.getElementById('employer-connection-status').textContent = 'Complete your profile to prepare for an introduction.';
+        renderEmployerMatches();
+      });
+      visaDashboardCountryEl.addEventListener('change', renderVisaDashboard);
+
+      document.querySelectorAll('.accordion-trigger').forEach((trigger, index) => {
+        trigger.type = 'button';
+        const content = trigger.nextElementSibling;
+        content.id = `accordion-content-${index + 1}`;
+        trigger.setAttribute('aria-controls', content.id);
+        trigger.setAttribute('aria-expanded', String(trigger.closest('.accordion-item').classList.contains('open')));
+        trigger.addEventListener('click', () => {
+          const item = trigger.closest('.accordion-item');
+          item.classList.toggle('open');
+          trigger.setAttribute('aria-expanded', String(item.classList.contains('open')));
+        });
+      });
+
+      function updatePlannerProgress(activeStep = null) {
+        const marker = window.innerHeight * 0.28;
+        const currentStep = activeStep || [...plannerSteps].reverse().find((step) => step.getBoundingClientRect().top <= marker) || plannerSteps[0];
+        const stepNumber = Number(currentStep.dataset.plannerStep);
+        stepProgressLabelEl.textContent = `Step ${stepNumber} of 7 · ${stepLabels[stepNumber - 1]}`;
+        stepProgressEl.setAttribute('aria-valuenow', String(stepNumber));
+        stepProgressFillEl.style.width = `${(stepNumber / 7) * 100}%`;
+        document.querySelectorAll('.step-link').forEach((link, index) => {
+          if (index + 1 === stepNumber) {
+            link.setAttribute('aria-current', 'step');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      }
+
+      let progressFrame = 0;
+      window.addEventListener('scroll', () => {
+        if (!progressFrame) {
+          progressFrame = window.requestAnimationFrame(() => {
+            updatePlannerProgress();
+            progressFrame = 0;
+          });
+        }
+      }, { passive: true });
+
+      document.getElementById('export-pdf').addEventListener('click', () => {
+        window.print();
+      });
+
+      initializeProfileToggles();
+      updateOriginBanner();
+      updateDestinationSummary();
+      renderVisaDashboard();
+      renderEmployerMatches();
+      renderTalentProfile();
+      updateProfilePoints();
+      recomputeScore();
+      updatePlannerProgress();
+    </script>
+  </body>
+</html>
